@@ -1,0 +1,230 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  position: inherit;
+}
+header {
+  height: 100px;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  position: fixed;
+}
+
+/*스크롤시 변경되는 header 스타일*/
+.active {
+  background: rgba(0, 0, 0, 0.6); /*스크롤 후*/
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  -webkit-transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease;
+}
+.deactive {
+  background: #000; /*스크롤 전*/
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  -webkit-transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0;
+  width: 100%;
+  position: absolute;
+}
+#title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  margin: 5px 115px 0 120px;
+}
+#title h4 {
+  margin: 32px 0;
+}
+
+.navbar_menu {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  width: 100%;
+}
+.navbar_menu li {
+  padding: 8px 12px;
+}
+
+/*메뉴바 상단 로그인 메뉴*/
+.navbar_links {
+  list-style: none;
+  padding-left: 0;
+  width: 250px;
+  float: right;
+  position: relative;
+  margin: 16px 0;
+}
+.navbar_links li {
+  display: inline-block;
+  position: relative;
+}
+.navbar_links li a {
+  color: #fff;
+  padding: 0 9px;
+  display: inline-block;
+}
+.navbar_links li::after {
+  content: "|";
+  font-size: 10px;
+  display: inline-block;
+  width: 2px;
+  height: 19px;
+  color: #888;
+  font-size: 10px;
+  vertical-align: middle;
+}
+.navbar_links li:last-child::after {
+  display: none;
+}
+
+.navbar_toggleBtn {
+  display: none;
+  position: absolute;
+  right: 32px;
+  font-size: 24px;
+}
+
+.navbar_menu > ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 1200px;
+}
+.navbar_menu > ul > li > a {
+  text-align: left;
+}
+.navbar_menu > ul > li {
+  text-align: left;
+}
+.navbar_menu li {
+  width: 100px;
+  font-size: 20px;
+  float: left;
+  padding: 37px 30px 37px;
+  margin: 0 60px 0;
+  display: block;
+}
+.navbar_menu li:nth-child(3) .sub ul li {
+  margin-left: -3px;
+}
+.navbar_menu a {
+  font-weight: bold;
+  color: #fff;
+  width: 70px;
+  padding: 15px;
+}
+.navbar_menu a::after {
+  content: "";
+  background: #000;
+  height: 2px;
+  width: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+header:hover {
+  background: #fff;
+  height: 260px;
+  transition: 0.2s ease-in-out;
+  color: #000;
+  border-bottom: 1px solid #666;
+}
+header:hover main {
+  position: absolute;
+  bottom: 260px;
+}
+header:hover .navbar {
+  padding: 0;
+  margin: 0;
+}
+header:hover .navbar__menu {
+  padding: 0;
+  margin: 0;
+}
+header:hover .navbar__menu > li > a {
+  text-align: center;
+}
+header:hover a {
+  color: #000;
+}
+header:hover #lnb > ul > li::after {
+  color: #000;
+}
+header:hover .sub {
+  display: block;
+  transition: inherit;
+}
+
+header a:hover {
+  color: #666;
+}
+header a:hover::after {
+  width: inherit;
+}
+header .sub {
+  display: none;
+  width: inherit;
+}
+
+.navbar .sub li {
+  float: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 20px;
+  height: 20px;
+  width: inherit;
+}
+.navbar .sub ul {
+  padding: 0;
+  margin-left: 20px;
+  display: inline-block;
+  width: inherit;
+}
+.navbar .sub a {
+  font-size: 15px;
+  padding: 0;
+  white-space: nowrap;
+}
+.navbar .sub a::after {
+  display: none;
+}
+.navbar .sub a:hover {
+  text-decoration: underline;
+}
+
+.login_bottom {
+  text-align: center;
+  margin-top: 15px;
+}
+.find_bottom a {
+  font-size: 14px;
+  color: #666;
+}
+.find_bottom a::before {
+  content: "|";
+  font-size: 12px;
+  display: inline-block;
+  width: 2px;
+  height: 18px;
+  margin-right: 5px;
+  color: #666;
+  vertical-align: middle;
+}
+.find_bottom a:first-child::before {
+  display: none;
+}

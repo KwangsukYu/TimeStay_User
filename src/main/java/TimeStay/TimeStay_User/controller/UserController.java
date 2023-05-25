@@ -26,4 +26,14 @@ public class UserController {
     public String UserHome() {
         return "index";
     }
+
+    @GetMapping("/login")
+    public String UserLogin() {
+        return "login";
+    }
+
+    @GetMapping("/nav")
+    public String UserNav() {
+        return "navigation";
+    }
 }

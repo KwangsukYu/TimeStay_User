@@ -1,0 +1,24 @@
+footer {
+  width: 100vw;
+  height: 300px;
+  margin: 0 auto;
+  background: rgb(93, 80, 82);
+}
+footer #container {
+  margin: auto;
+  padding-left: 10vw;
+  padding-top: 6vh;
+}
+footer #footer1,
+#footer2 {
+  display: inline-block;
+  color: white;
+  line-height: 2em;
+}
+footer h2 {
+  font-size: 25px;
+  font-weight: bold;
+}
+footer #footer1 {
+  padding-right: 10vw;
+}
