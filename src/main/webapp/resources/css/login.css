@@ -68,3 +68,9 @@
 #submit:active {
   background-color: rgb(230, 179, 114);
 }
+
+.login_fail {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+}

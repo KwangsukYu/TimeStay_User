@@ -11,13 +11,13 @@ import javax.persistence.*;
 @Table(name="TIMESTAY_USER")
 public class UserDAO {
     @Id @GeneratedValue
-    private long UIDX;
-    private String UMAIL;
-    private String UPWD;
-    private String UNAME;
-    private String UPHONE;
+    private long uidx;
+    private String umail;
+    private String upwd;
+    private String uname;
+    private String uphone;
     private String UADDR;
-    private int UROLE;
-    private int UPOINT;
-    private String UTYPE;
+    private int urole;
+    private int upoint;
+    private String utype;
 }

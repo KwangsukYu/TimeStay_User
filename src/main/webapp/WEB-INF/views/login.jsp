@@ -12,7 +12,7 @@ pageEncoding="UTF-8"%> <%@include file="./navigation.jsp" %>
     <div class="find">
       <div class="Login">
         <h4>로그인</h4>
-        <form action="*" method="post" id="frm">
+        <form action="<%= BASE_URL %>user/auth" method="post" id="frm">
           <table>
             <tr>
               <td>
@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%> <%@include file="./navigation.jsp" %>
                   class="login_ID"
                   type="text"
                   placeholder="아이디"
-                  name="Mid"
+                  name="UMAIL"
                 />
               </td>
             </tr>
@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%> <%@include file="./navigation.jsp" %>
                   class="login_PW"
                   type="password"
                   placeholder="비밀번호"
-                  name="Mpwd"
+                  name="UPWD"
                 />
               </td>
               <!-- name값 필드값과 동일하게 하기!! -->
@@ -38,6 +38,9 @@ pageEncoding="UTF-8"%> <%@include file="./navigation.jsp" %>
             <tr>
               <td>
                 <button id="submit">로그인</button>
+                <c:if test="${loginFail==true}">
+                  <p class="login_fail">아이디 또는 비밀번호를 확인해주세요.</p>
+                </c:if>
               </td>
             </tr>
           </table>
