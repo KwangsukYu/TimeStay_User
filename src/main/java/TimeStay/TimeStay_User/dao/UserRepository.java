@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<UserDAO, Long> {
     UserDAO findByUmail(String umail);
+
+    void deleteByUmail(String umail);
 }

@@ -1,0 +1,110 @@
+@charset "utf-8";
+/* id  = '#' , class = '.' */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  position: inherit;
+}
+header {
+  height: 100px;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  position: fixed;
+}
+
+main #signupstep {
+  width: 60vw;
+  height: 13vh;
+  margin: 15vh auto 0 auto;
+  border: 1px solid rgb(192, 187, 187);
+}
+
+main #step1,
+#step2,
+#step3 {
+  width: 20vw;
+  height: 13vh;
+  float: left;
+}
+main #step1 {
+  background: rgb(203, 203, 203);
+}
+
+main #text {
+  margin: 3vh auto;
+}
+
+main #text p {
+  font-weight: bold;
+  font-size: 2.5vh;
+  text-align: center;
+}
+
+main h2 {
+  text-align: center;
+  margin: 10vh auto 0 auto;
+  font-size: 2.5vh;
+  font-weight: bold;
+}
+
+main #terms {
+  width: 45vw;
+  margin: 8vh auto 10vh auto; /*background: yellowgreen;*/
+}
+main table {
+  margin: 0 auto;
+}
+main table tr {
+  height: 4vh;
+}
+main textarea {
+  width: 25vw;
+  height: 15vh;
+}
+main #textcheck {
+  text-align: right;
+}
+#terms button {
+  float: right;
+  width: 6vw;
+  height: 3vh;
+  margin-right: 10vw;
+}
+
+main textarea {
+  font-size: 15px;
+}
+
+footer {
+  width: 100vw;
+  height: 300px;
+  margin: 0 auto;
+  background: rgb(93, 80, 82);
+}
+
+footer #container {
+  margin: auto;
+  padding-left: 10vw;
+  padding-top: 6vh;
+}
+
+footer #footer1,
+#footer2 {
+  display: inline-block;
+  color: white;
+  line-height: 2em;
+}
+footer h2 {
+  font-size: 25px;
+  font-weight: bold;
+}
+footer #footer1 {
+  padding-right: 10vw;
+}

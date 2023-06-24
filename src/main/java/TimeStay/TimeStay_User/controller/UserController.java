@@ -1,9 +1,13 @@
 package TimeStay.TimeStay_User.controller;
 
+import TimeStay.TimeStay_User.Config.WebConfigSecurity;
 import TimeStay.TimeStay_User.dao.UserDAO;
+import TimeStay.TimeStay_User.dao.UserRepository;
 import TimeStay.TimeStay_User.service.UserService;
 import TimeStay.TimeStay_User.vo.LoginVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.Optional;
 
 //@RestController
@@ -19,6 +24,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserController {
 
+    WebConfigSecurity webConfigSecurity = new WebConfigSecurity();
+
     private final UserService UserService;
 //    @GetMapping("/{id}")
 //    public Optional<UserDAO> getUSer(@PathVariable long id) {
@@ -26,7 +33,7 @@ public class UserController {
 //    }
 
     @GetMapping("/test")
-    public String UserHome() {
+    public String UserHome(Model mo) {
         return "index";
     }
 
@@ -38,6 +45,16 @@ public class UserController {
     @GetMapping("/nav")
     public String UserNav() {
         return "navigation";
+    }
+
+    @GetMapping("/signup")
+    public String signup() {
+        return "signup1";
+    }
+
+    @GetMapping("/signup_info")
+    public String signupInfo() {
+        return "signup2";
     }
 
     @PostMapping("/auth")
@@ -65,6 +82,15 @@ public class UserController {
         return "redirect:/user/test";
     }
 
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public boolean idCheck(@RequestBody HashMap<String, Object> map) {
+        if (UserService.getUSer((String)map.get("UMAIL")) != null) {
+            return false;
+        }
+        return true;
+    }
+
     @GetMapping("/mypage")
     public String mypage(HttpServletRequest req, Model model) {
         HttpSession session = req.getSession(false);
@@ -77,4 +103,36 @@ public class UserController {
         model.addAttribute("umail", user.getUmail());
         return "mypageManage";
     }
+
+
+    @PostMapping("/signupConfirm")
+    public String signupConfirm(HttpServletRequest req) {
+        UserDAO user = new UserDAO();
+        user.setUmail(req.getParameter("Mid"));
+        String pwd = webConfigSecurity.getPasswordEncoder().encode(req.getParameter("Mpwd"));
+        user.setUpwd(pwd);
+        user.setUname(req.getParameter("Mname"));
+        user.setUphone(req.getParameter("Mphone"));
+        String addr = req.getParameter("Madd") + "?/" + req.getParameter("Madd2") + "?/" + req.getParameter("Madd3");
+        user.setUADDR(addr);
+        user.setUrole(1);
+        user.setUtype("Normal");
+        user.setUpoint(1);
+        UserService.createUser(user);
+        return "redirect:/user/login";
+    }
+
+    @DeleteMapping("/withdraw/{id}")
+    public @ResponseBody Boolean withdraw(@PathVariable String id) {
+        UserService.deleteUser(id);
+        System.out.println("뭐야 대체");
+        return true;
+    }
+
+    @GetMapping("/tt")
+    public String tt() {
+        return "redirect:/user/login";
+    }
+
+
 }

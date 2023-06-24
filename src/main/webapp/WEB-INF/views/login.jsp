@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%> <%@include file="./navigation.jsp" %>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../../resources/css/login.css" />
+    <link rel="stylesheet" href="<%= BASE_URL %>resources/css/login.css" />
   </head>
   <body>
     <div class="nav_space"></div>
@@ -47,7 +47,7 @@ pageEncoding="UTF-8"%> <%@include file="./navigation.jsp" %>
         </form>
 
         <div class="login_bottom">
-          <a href="*">회원가입</a>
+          <a href="<%= BASE_URL %>user/signup">회원가입</a>
           <a href="*">아이디 찾기</a>
           <a href="*">비밀번호 찾기</a>
         </div>

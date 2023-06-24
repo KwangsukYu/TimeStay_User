@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="../../resources/css/footer.css" />
+  <link rel="stylesheet" href="<%= BASE_URL %>resources/css/footer.css" />
 <body>
   <footer>
     <div id="container">

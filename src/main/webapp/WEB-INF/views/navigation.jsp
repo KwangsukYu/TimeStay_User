@@ -9,11 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIME STAY : 로그인</title>
 
-  <link rel="stylesheet" href="../../resources/css/reset.css"/>
-  <link rel="stylesheet" href="../../resources/css/navigation.css">
+  <link rel="stylesheet" href="<%= BASE_URL %>resources/css/reset.css"/>
+  <link rel="stylesheet" href="<%= BASE_URL %>resources/css/navigation.css">
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script> <!--생년월일 select 박스-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><!--jquery 3.6 적용-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <style>
     

@@ -4,7 +4,10 @@ pageEncoding="UTF-8"%> <%@include file="./navigation.jsp" %>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../../resources/css/mypageManage.css" />
+    <link
+      rel="stylesheet"
+      href="<%= BASE_URL %>resources/css/mypageManage.css"
+    />
     <title>Title2</title>
   </head>
   <body>
@@ -51,11 +54,8 @@ pageEncoding="UTF-8"%> <%@include file="./navigation.jsp" %>
           </li>
         </c:if>
 
-        <li>
-          <a
-            href="<%=request.getContextPath()%>/MyPage/member_Delete.do?Mid=${Mid}"
-            >회원 탈퇴</a
-          >
+        <li onclick="withdraw(`${umail}`)"
+          <a class="withdraw_bnt">회원 탈퇴</a>
         </li>
       </ul>
     </div>
@@ -187,6 +187,16 @@ pageEncoding="UTF-8"%> <%@include file="./navigation.jsp" %>
   </body>
 
   <script>
+    function withdraw(name) {
+      console.log(1);
+      axios
+        .delete("<%= BASE_URL %>user/withdraw/" + name)
+        .then(res =>
+        window.location.href="<%= BASE_URL %>user/login")
+        alert("탈퇴완료")
+        .catch(err => consolelog("err : " + err))
+    }
+
     function Postcode() {
       new daum.Postcode({
         oncomplete: function (data) {

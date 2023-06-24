@@ -1,5 +1,6 @@
 package TimeStay.TimeStay_User.service.impl;
 
+import TimeStay.TimeStay_User.Config.WebConfigSecurity;
 import TimeStay.TimeStay_User.dao.UserDAO;
 import TimeStay.TimeStay_User.dao.UserRepository;
 import TimeStay.TimeStay_User.service.UserService;
@@ -8,6 +9,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +18,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository UserRepository;
+    WebConfigSecurity webConfigSecurity = new WebConfigSecurity();
+
 
 //    @Override
 //    public Optional<UserDAO> getUser(long id) {
@@ -26,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean login(LoginVO LV) {
         UserDAO findUser = UserRepository.findByUmail(LV.getUmail());
-        if(findUser.getUpwd().equals(LV.getUpwd())) {
+        if(webConfigSecurity.getPasswordEncoder().matches(LV.getUpwd(), findUser.getUpwd())) {
             return true;
         };
         return false;
@@ -36,5 +40,16 @@ public class UserServiceImpl implements UserService {
     public UserDAO getUSer(String UMAIL) {
         UserDAO user = UserRepository.findByUmail(UMAIL);
         return user;
+    }
+
+    @Override
+    public void createUser(UserDAO user) {
+        UserRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public void deleteUser(String umail) {
+        UserRepository.deleteByUmail(umail);
     }
 }

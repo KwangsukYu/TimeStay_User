@@ -9,6 +9,10 @@ public interface UserService {
 
 //    Optional<UserDAO> getUser(long id);
 
-    public boolean login(LoginVO LV);
-    public UserDAO getUSer(String UMAIL);
+    boolean login(LoginVO LV);
+    UserDAO getUSer(String UMAIL);
+
+    void createUser(UserDAO user);
+
+    void deleteUser(String UMAIL);
 }
